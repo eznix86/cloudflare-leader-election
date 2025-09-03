@@ -1,0 +1,20 @@
+cluster:
+  nodes:
+    - "172.20.0.10"
+    - "172.20.0.11"
+    - "172.20.0.12"
+
+  ping_interval: 2s
+  health_timeout: 8s
+  failure_threshold: 2
+  leader_check_interval: 10s
+  emergency_timeout: 5m
+  udp_port: 8080
+
+cloudflare:
+  api_key: "123"
+  email: your-email@example.com
+  zone_id: "123"
+  domains:
+    - "api.example.com"
+    - "service.example.com"

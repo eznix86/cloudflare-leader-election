@@ -1,0 +1,295 @@
+services:
+  health-node1:
+    build: .
+    container_name: health-checker-node1
+    hostname: node1
+    networks:
+      health-net:
+        ipv4_address: 172.20.0.10
+    ports:
+      - "8080:8080/udp"
+    volumes:
+      - ./config-multi.yaml:/app/config.yaml:ro
+    environment:
+      - NODE_IP=172.20.0.10
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "netstat", "-ul", "|", "grep", ":8080"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  health-node2:
+    build: .
+    container_name: health-checker-node2
+    hostname: node2
+    networks:
+      health-net:
+        ipv4_address: 172.20.0.11
+    ports:
+      - "8081:8080/udp"
+    volumes:
+      - ./config-multi.yaml:/app/config.yaml:ro
+    environment:
+      - NODE_IP=172.20.0.11
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "netstat", "-ul", "|", "grep", ":8080"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  health-node3:
+    build: .
+    container_name: health-checker-node3
+    hostname: node3
+    networks:
+      health-net:
+        ipv4_address: 172.20.0.12
+    ports:
+      - "8082:8080/udp"
+    volumes:
+      - ./config-multi.yaml:/app/config.yaml:ro
+    environment:
+      - NODE_IP=172.20.0.12
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "netstat", "-ul", "|", "grep", ":8080"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  health-node4:
+    build: .
+    container_name: health-checker-node4
+    hostname: node4
+    networks:
+      health-net:
+        ipv4_address: 172.20.0.13
+    ports:
+      - "8083:8080/udp"
+    volumes:
+      - ./config-multi.yaml:/app/config.yaml:ro
+    environment:
+      - NODE_IP=172.20.0.13
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "netstat", "-ul", "|", "grep", ":8080"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  health-node5:
+    build: .
+    container_name: health-checker-node5
+    hostname: node5
+    networks:
+      health-net:
+        ipv4_address: 172.20.0.14
+    ports:
+      - "8084:8080/udp"
+    volumes:
+      - ./config-multi.yaml:/app/config.yaml:ro
+    environment:
+      - NODE_IP=172.20.0.14
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "netstat", "-ul", "|", "grep", ":8080"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+  health-node6:
+    build: .
+    container_name: health-checker-node6
+    hostname: node6
+    networks:
+      health-net:
+        ipv4_address: 172.20.0.15
+    ports:
+      - "8085:8080/udp"
+    volumes:
+      - ./config-multi.yaml:/app/config.yaml:ro
+    environment:
+      - NODE_IP=172.20.0.15
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "netstat", "-ul", "|", "grep", ":8080"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  health-node7:
+    build: .
+    container_name: health-checker-node7
+    hostname: node7
+    networks:
+      health-net:
+        ipv4_address: 172.20.0.16
+    ports:
+      - "8086:8080/udp"
+    volumes:
+      - ./config-multi.yaml:/app/config.yaml:ro
+    environment:
+      - NODE_IP=172.20.0.16
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "netstat", "-ul", "|", "grep", ":8080"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  health-node8:
+    build: .
+    container_name: health-checker-node8
+    hostname: node8
+    networks:
+      health-net:
+        ipv4_address: 172.20.0.17
+    ports:
+      - "8087:8080/udp"
+    volumes:
+      - ./config-multi.yaml:/app/config.yaml:ro
+    environment:
+      - NODE_IP=172.20.0.17
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "netstat", "-ul", "|", "grep", ":8080"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  health-node9:
+    build: .
+    container_name: health-checker-node9
+    hostname: node9
+    networks:
+      health-net:
+        ipv4_address: 172.20.0.18
+    ports:
+      - "8088:8080/udp"
+    volumes:
+      - ./config-multi.yaml:/app/config.yaml:ro
+    environment:
+      - NODE_IP=172.20.0.18
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "netstat", "-ul", "|", "grep", ":8080"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+
+  health-node10:
+    build: .
+    container_name: health-checker-node10
+    hostname: node10
+    networks:
+      health-net:
+        ipv4_address: 172.20.0.19
+    ports:
+      - "8089:8080/udp"
+    volumes:
+      - ./config-multi.yaml:/app/config.yaml:ro
+    environment:
+      - NODE_IP=172.20.0.19
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "netstat", "-ul", "|", "grep", ":8080"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  health-node11:
+    build: .
+    container_name: health-checker-node11
+    hostname: node11
+    networks:
+      health-net:
+        ipv4_address: 172.20.0.20
+    ports:
+      - "8090:8080/udp"
+    volumes:
+      - ./config-multi.yaml:/app/config.yaml:ro
+    environment:
+      - NODE_IP=172.20.0.20
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "netstat", "-ul", "|", "grep", ":8080"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+networks:
+  health-net:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.20.0.0/16
+          gateway: 172.20.0.1

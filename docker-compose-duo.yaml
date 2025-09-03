@@ -1,0 +1,61 @@
+services:
+  health-node1:
+    build: .
+    container_name: health-checker-node1
+    hostname: node1
+    networks:
+      health-net:
+        ipv4_address: 172.20.0.10
+    ports:
+      - "8080:8080/udp"
+    volumes:
+      - ./config-duo.yaml:/app/config.yaml:ro
+    environment:
+      - NODE_IP=172.20.0.10
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "netstat", "-ul", "|", "grep", ":8080"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  health-node2:
+    build: .
+    container_name: health-checker-node2
+    hostname: node2
+    networks:
+      health-net:
+        ipv4_address: 172.20.0.11
+    ports:
+      - "8081:8080/udp"
+    volumes:
+      - ./config-duo.yaml:/app/config.yaml:ro
+    environment:
+      - NODE_IP=172.20.0.11
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "netstat", "-ul", "|", "grep", ":8080"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+networks:
+  health-net:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.20.0.0/16
+          gateway: 172.20.0.1

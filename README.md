@@ -90,3 +90,5 @@ In clusters with 3+ nodes, if the cluster operates with a minority of nodes for 
 - Use environment variables with secrets and the configMap to store the configuration
 - Enable hostNetwork to allow UDP communication and to get the node IP
 - Let it do the work.
+- Profit.
+- It can work outside of Kubernetes too. So you know.
